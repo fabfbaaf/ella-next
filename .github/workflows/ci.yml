@@ -13,7 +13,6 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 20
     env:
-      ELLA_DATA_DIR: ${{ runner.temp }}/ella-ci-${{ github.run_id }}-${{ github.run_attempt }}
       ELLA_GAME_SETUP_AUTO: "0"
       ELLA_RESOURCE_INTEGRATION: "0"
       PYTHONUTF8: "1"
@@ -27,6 +26,8 @@ jobs:
       - name: Install runtime and test dependencies
         run: python -m pip install -e "services/runtime[dev,browser,office,office-live,screen]"
       - name: Test runtime with isolated local data
+        env:
+          ELLA_DATA_DIR: ${{ runner.temp }}/ella-ci-${{ github.run_id }}-${{ github.run_attempt }}
         run: python -m pytest -q -rs -p no:cacheprovider services/runtime/tests
 
   frontend:
