@@ -1,0 +1,9 @@
+{
+  "Name": "Ella Stardew Bridge",
+  "Author": "桔梗",
+  "Version": "0.1.0",
+  "Description": "Local telemetry and verified action bridge for Ella companion sessions.",
+  "UniqueID": "Ella.StardewBridge",
+  "EntryDll": "Ella.StardewBridge.dll",
+  "MinimumApiVersion": "4.5.0"
+}

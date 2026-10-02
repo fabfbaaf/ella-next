@@ -1,0 +1,49 @@
+name: Source checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      ELLA_DATA_DIR: ${{ runner.temp }}/ella-ci-${{ github.run_id }}-${{ github.run_attempt }}
+      ELLA_GAME_SETUP_AUTO: "0"
+      ELLA_RESOURCE_INTEGRATION: "0"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: services/runtime/pyproject.toml
+      - name: Install runtime and test dependencies
+        run: python -m pip install -e "services/runtime[dev,browser,office,office-live,screen]"
+      - name: Test runtime with isolated local data
+        run: python -m pytest -q -rs -p no:cacheprovider services/runtime/tests
+
+  frontend:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.5.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.10.0"
+          cache: pnpm
+      - name: Install locked frontend dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Test model forms and voice notification lifecycle
+        run: node --test scripts/test-model-form-state.mjs scripts/test-notification-speech.mjs scripts/test-voice-notification-lease.mjs
+      - name: Build desktop frontend
+        run: pnpm build:desktop

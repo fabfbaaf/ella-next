@@ -1,0 +1,5 @@
+.pet-live2d{position:absolute;display:block;width:220px;height:500px;cursor:grab;touch-action:none}
+.pet-live2d:active{cursor:grabbing}
+.pet-portrait{position:absolute;border:0;background:transparent;padding:0;width:220px;height:500px;cursor:grab;touch-action:none}
+.pet-portrait:active{cursor:grabbing}
+.pet-portrait img{height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 9px 13px #556ea044)}

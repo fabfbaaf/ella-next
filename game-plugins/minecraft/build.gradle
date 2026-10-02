@@ -1,0 +1,51 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+group = project.maven_group
+version = project.mod_version
+base { archivesName = 'ella-minecraft-bridge' }
+
+repositories { }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+loom {
+    splitEnvironmentSourceSets()
+    mods {
+        "ella-game-bridge" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach { it.options.release = 25 }
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") { expand "version": project.version }
+}
+
+// Exercise the input watchdog without starting a game or resolving test libraries.
+tasks.register('compileActionWatchdogTest', JavaCompile) {
+    source = files('src/main/java/ai/ella/minecraft/ActionWatchdog.java',
+        'src/safetyTest/java/ai/ella/minecraft/ActionWatchdogTest.java')
+    classpath = files()
+    destinationDirectory = layout.buildDirectory.dir('safety-test')
+}
+tasks.register('checkActionWatchdog', JavaExec) {
+    dependsOn tasks.named('compileActionWatchdogTest')
+    classpath = files(layout.buildDirectory.dir('safety-test'))
+    mainClass = 'ai.ella.minecraft.ActionWatchdogTest'
+}
+tasks.named('check') { dependsOn tasks.named('checkActionWatchdog') }

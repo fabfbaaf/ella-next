@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ella-runtime"
+version = "1.0.0"
+license = "MIT"
+authors = [{ name = "桔梗" }]
+description = "Ella Next local agent runtime"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.35,<1",
+  "websockets>=15,<17",
+  "pydantic>=2.10,<3",
+  "httpx>=0.28,<1",
+  "keyring>=25,<27",
+  "tzdata>=2025.2"
+]
+
+[project.optional-dependencies]
+packaging = ["pyinstaller==6.22.3"]
+dev = ["pytest>=8,<9", "ruff>=0.12,<1"]
+browser = ["playwright>=1.55,<2"]
+office = ["openpyxl>=3.1,<4", "python-docx>=1.2,<2", "python-pptx>=1.0,<2"]
+office-live = ["pywin32>=306; sys_platform == 'win32'"]
+screen = ["Pillow>=12,<13"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ella_runtime"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+markers = [
+  "resource_integration: optional prepared game payload tests (ELLA_RESOURCE_INTEGRATION=1)"
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100

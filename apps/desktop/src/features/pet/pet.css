@@ -1,0 +1,3 @@
+html:has(.pet-body),html:has(.pet-body) body,html:has(.pet-body) #root{background:transparent!important}
+.pet-body .pet-window{position:relative;width:220px;height:500px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden}
+.pet-body .pet-stage{position:absolute;inset:0;width:220px;height:500px;display:grid;place-items:center}

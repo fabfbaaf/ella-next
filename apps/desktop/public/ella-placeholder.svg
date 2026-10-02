@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 500" role="img" aria-labelledby="title desc">
+  <title id="title">艾拉 · 原创源码占位角色</title>
+  <desc id="desc">紫色短发、淡蓝眼睛和深蓝衣裙的简洁二维角色。</desc>
+  <defs>
+    <linearGradient id="hair" x2="1" y2="1"><stop stop-color="#b9a8e6"/><stop offset="1" stop-color="#7b68ae"/></linearGradient>
+    <linearGradient id="dress" x2="0" y2="1"><stop stop-color="#566b98"/><stop offset="1" stop-color="#29374f"/></linearGradient>
+  </defs>
+  <path d="M63 340l17 102 13 1 6-103m23 0 6 103 13-1 17-102" fill="#e6d7df" stroke="#5c526a" stroke-width="3"/>
+  <path d="M79 422l-7 30q8 10 24 2v-31m31 0v31q16 8 24-2l-9-30" fill="#3b3853"/>
+  <path d="M70 200q-22 40-30 110l14 9 26-85m70-34q22 40 30 110l-14 9-26-85" fill="#e6d7df" stroke="#5c526a" stroke-width="3"/>
+  <path d="M63 198l29-11h36l29 11-13 70 26 89q-60 23-120 0l27-89z" fill="url(#dress)" stroke="#3b3853" stroke-width="3"/>
+  <path d="M89 188l21 25 22-25-5 44-17-10-17 10z" fill="#eeeafa"/>
+  <path d="M98 216l12 10 12-10-12 31z" fill="#a89aca"/>
+  <path d="M65 251q44 17 90 0m-101 91q55 19 110 0" fill="none" stroke="#b0b5d5" stroke-width="4"/>
+  <path d="M49 160q-9-104 62-106t61 109l-23 31-78-4z" fill="url(#hair)" stroke="#5c526a" stroke-width="3"/>
+  <path d="M67 104q42-35 85 0v39q-4 39-42 41t-43-41z" fill="#f6e5df" stroke="#6a5264" stroke-width="3"/>
+  <path d="M53 127q-6-71 54-71 69-1 64 72-32-3-40-47-19 47-78 46z" fill="url(#hair)"/>
+  <path d="M75 138l19-2m32 0 19 2" stroke="#55466b" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="87" cy="145" rx="6" ry="10" fill="#6b98b8"/><ellipse cx="136" cy="145" rx="6" ry="10" fill="#6b98b8"/>
+  <circle cx="89" cy="142" r="2" fill="#fff"/><circle cx="138" cy="142" r="2" fill="#fff"/>
+  <path d="M102 166q8 3 16-1" fill="none" stroke="#a66d80" stroke-width="2" stroke-linecap="round"/>
+  <path d="M153 99l12 5-13 9-10-5z" fill="#a6d5d2" stroke="#4b7c85" stroke-width="2"/>
+</svg>

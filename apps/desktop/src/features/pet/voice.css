@@ -1,0 +1,4 @@
+.voice-control{position:absolute;inset:0;z-index:2;pointer-events:none}
+.voice-control button{display:none}
+.voice-caption{position:absolute;right:8px;bottom:12px;left:8px;max-height:110px;overflow:auto;margin:0;padding:8px 10px;border-radius:12px;background:rgba(248,251,255,.94);color:#253755;font-size:13px;line-height:1.5;box-shadow:0 3px 14px rgba(29,48,82,.2);pointer-events:auto}
+.voice-control .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

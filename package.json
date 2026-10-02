@@ -1,0 +1,14 @@
+{
+  "name": "ella-next",
+  "version": "1.0.0",
+  "author": "桔梗",
+  "license": "MIT",
+  "packageManager": "pnpm@12.5.1",
+  "private": true,
+  "scripts": {
+    "dev:desktop": "pnpm --filter @ella/desktop dev",
+    "build:desktop": "pnpm --filter @ella/desktop build",
+    "tauri:dev": "pnpm --filter @ella/desktop tauri dev",
+    "tauri:build": "pnpm --filter @ella/desktop tauri build"
+  }
+}
